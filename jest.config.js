@@ -1,4 +1,4 @@
-module.eports = {
-    "testEnvironment": 'node',
+module.exports = {
+  
     "preset": "@shelf/jest-mongodb"
   }
