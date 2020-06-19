@@ -12,7 +12,8 @@ const jokesRouter = require('./jokes/jokes-router');
 dotenv.config()
 
 mongoose.connect(process.env.DB_CONNECT,
-{ useNewUrlParser: true },
+{ useNewUrlParser: true,
+  useUnifiedTopology: true },
 ()=> console.log('connect to db!'))
 
 
@@ -24,7 +25,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', authRouter);
-server.use('/api/jokes', authenticate, jokesRouter);
+server.use('/api/jokes',  jokesRouter);
 
 
 
