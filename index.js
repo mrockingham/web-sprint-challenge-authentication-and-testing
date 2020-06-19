@@ -5,7 +5,8 @@ const server = express();
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
-const authenticate = require('./auth/authenticate-middleware');
+
+
 const authRouter = require('./auth/auth-router');
 const jokesRouter = require('./jokes/jokes-router');
 
@@ -15,6 +16,10 @@ mongoose.connect(process.env.DB_CONNECT,
 { useNewUrlParser: true,
   useUnifiedTopology: true },
 ()=> console.log('connect to db!'))
+
+server.get('/',(req,res)=>{
+  res.send('hello World')
+})
 
 
 
