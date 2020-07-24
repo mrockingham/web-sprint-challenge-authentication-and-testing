@@ -19,29 +19,28 @@ describe("Users model", function () {
             // table was cleared by the beforeEach() function
             await Users.add({ username: "mom", password: 'password' });
             await Users.add({ username: "dad", password: 'password' });
-            await Users.add({ username: "son"});
+            
 
             const users = await db("users");
 
             expect(users).toHaveLength(2);
         });
+
+        it("should not enter user in database", async () => {
+                    // table was cleared by the beforeEach() function
+                
+                    await Users.add({ username: "son"});
+
+                    const users = await db("users");
+
+                    expect(users).toHaveLength(2);
+                });
+
     });
 });
 
-describe("Users model", function () {
-    describe("add()", function () {
-        beforeEach(async () => {
-            await db("users").truncate();
-        });
 
-        it("should insert users into database", async () => {
-            // table was cleared by the beforeEach() function
-           
-            await Users.add({ username: "son"});
+    
 
-            const users = await db("users");
-
-            expect(users).toHaveLength(2);
-        });
-    });
-});
+        
+    
